@@ -57,12 +57,14 @@
                                                 Dashboard
                                             </a>
                                         </li>
+                                        @if(auth()->user()?->isAdmin())
                                         <li>
                                             <a href="{{ route('admin.users.index') }}" class="{{ request()->routeIs('admin.users.*') ? 'bg-primary-dark text-white' : 'text-gray-400 hover:text-secondary hover:bg-gray-200' }} group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold">
                                                 <i class="fas fa-users text-lg w-6 shrink-0 text-center"></i>
                                                 Users
                                             </a>
                                         </li>
+                                        @endif
                                         <li>
                                             <a href="{{ route('admin.doctors.index') }}" class="{{ request()->routeIs('admin.doctors.*') ? 'bg-primary-dark text-white' : 'text-gray-400 hover:text-secondary hover:bg-gray-200' }} group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold">
                                                 <i class="fas fa-user-md text-lg w-6 shrink-0 text-center"></i>
@@ -73,6 +75,20 @@
                                             <a href="{{ route('admin.settings.index') }}" class="{{ request()->routeIs('admin.settings.*') ? 'bg-primary-dark text-white' : 'text-gray-400 hover:text-secondary hover:bg-gray-200' }} group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold">
                                                 <i class="fas fa-cog text-lg w-6 shrink-0 text-center"></i>
                                                 Settings (Medsos)
+                                            </a>
+                                        </li>
+                                        @if(auth()->user()?->isAdmin())
+                                        <li>
+                                            <a href="{{ route('admin.history.index') }}" class="{{ request()->routeIs('admin.history.*') ? 'bg-primary-dark text-white' : 'text-gray-400 hover:text-secondary hover:bg-gray-200' }} group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold">
+                                                <i class="fas fa-history text-lg w-6 shrink-0 text-center"></i>
+                                                Riwayat
+                                            </a>
+                                        </li>
+                                        @endif
+                                        <li>
+                                            <a href="{{ route('admin.archive.index') }}" class="{{ request()->routeIs('admin.archive.*') ? 'bg-primary-dark text-white' : 'text-gray-400 hover:text-secondary hover:bg-gray-200' }} group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold">
+                                                <i class="fas fa-archive text-lg w-6 shrink-0 text-center"></i>
+                                                Arsip
                                             </a>
                                         </li>
                                     </ul>
@@ -100,12 +116,14 @@
                                         Dashboard
                                     </a>
                                 </li>
+                                @if(auth()->user()?->isAdmin())
                                 <li>
                                     <a href="{{ route('admin.users.index') }}" class="{{ request()->routeIs('admin.users.*') ? 'bg-primary-dark text-white' : 'text-gray-400 hover:text-secondary hover:bg-gray-200' }} group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold">
                                         <i class="fas fa-users text-lg w-6 shrink-0 text-center"></i>
                                         Users
                                     </a>
                                 </li>
+                                @endif
                                 <li>
                                     <a href="{{ route('admin.doctors.index') }}" class="{{ request()->routeIs('admin.doctors.*') ? 'bg-primary-dark text-white' : 'text-gray-400 hover:text-secondary hover:bg-gray-200' }} group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold">
                                         <i class="fas fa-user-md text-lg w-6 shrink-0 text-center"></i>
@@ -116,6 +134,20 @@
                                     <a href="{{ route('admin.settings.index') }}" class="{{ request()->routeIs('admin.settings.*') ? 'bg-primary-dark text-white' : 'text-gray-400 hover:text-secondary hover:bg-gray-200' }} group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold">
                                         <i class="fas fa-cog text-lg w-6 shrink-0 text-center"></i>
                                         Settings (Medsos)
+                                    </a>
+                                </li>
+                                @if(auth()->user()?->isAdmin())
+                                <li>
+                                    <a href="{{ route('admin.history.index') }}" class="{{ request()->routeIs('admin.history.*') ? 'bg-primary-dark text-white' : 'text-gray-400 hover:text-secondary hover:bg-gray-200' }} group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold">
+                                        <i class="fas fa-history text-lg w-6 shrink-0 text-center"></i>
+                                        Riwayat
+                                    </a>
+                                </li>
+                                @endif
+                                <li>
+                                    <a href="{{ route('admin.archive.index') }}" class="{{ request()->routeIs('admin.archive.*') ? 'bg-primary-dark text-white' : 'text-gray-400 hover:text-secondary hover:bg-gray-200' }} group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold">
+                                        <i class="fas fa-archive text-lg w-6 shrink-0 text-center"></i>
+                                        Arsip
                                     </a>
                                 </li>
                             </ul>
@@ -141,9 +173,12 @@
                         <div class="relative" x-data="{ open: false }">
                             <button type="button" class="-m-1.5 flex items-center p-1.5" @click="open = !open" @click.outside="open = false">
                                 <span class="sr-only">Open user menu</span>
-                                <img class="h-8 w-8 rounded-full bg-gray-50" src="https://ui-avatars.com/api/?name=Admin&background=random" alt="">
+                                <img class="h-8 w-8 rounded-full bg-gray-50 object-cover" src="https://ui-avatars.com/api/?name={{ urlencode(auth()->user()?->name ?? 'User') }}&background=0D8ABC&color=fff" alt="">
                                 <span class="hidden lg:flex lg:items-center">
-                                    <span class="ml-4 text-sm font-semibold leading-6 text-gray-900" aria-hidden="true">Admin User</span>
+                                    <span class="ml-4 text-sm font-semibold leading-6 text-gray-900" aria-hidden="true">{{ auth()->user()?->name }}</span>
+                                    <span class="ml-2 rounded px-1.5 py-0.5 text-xs font-medium {{ auth()->user()?->isAdmin() ? 'bg-purple-100 text-purple-700' : 'bg-blue-100 text-blue-700' }}">
+                                        {{ auth()->user()?->role?->label() ?? 'Editor' }}
+                                    </span>
                                     <i class="fas fa-chevron-down ml-2 text-xs text-gray-400"></i>
                                 </span>
                             </button>
@@ -179,6 +214,19 @@
             <!-- Main Content Area -->
             <main class="py-10">
                 <div class="px-4 sm:px-6 lg:px-8">
+                    @if(session('success'))
+                        <div class="mb-6 rounded-lg bg-emerald-50 p-4 border border-emerald-200 text-sm text-emerald-800 flex items-center">
+                            <i class="fas fa-check-circle text-emerald-500 mr-2"></i>
+                            <span>{{ session('success') }}</span>
+                        </div>
+                    @endif
+                    @if(session('error'))
+                        <div class="mb-6 rounded-lg bg-red-50 p-4 border border-red-200 text-sm text-red-800 flex items-center">
+                            <i class="fas fa-exclamation-circle text-red-500 mr-2"></i>
+                            <span>{{ session('error') }}</span>
+                        </div>
+                    @endif
+
                     @yield('content')
                 </div>
             </main>

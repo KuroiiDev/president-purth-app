@@ -60,6 +60,20 @@ return [
             'report' => false,
         ],
 
+        'home_images' => [
+            'driver' => 'local',
+            'root' => public_path('images'),
+            'throw' => false,
+            'report' => false,
+        ],
+
+        'home_archive' => [
+            'driver' => 'local',
+            'root' => storage_path('app/archive'),
+            'throw' => false,
+            'report' => false,
+        ],
+
     ],
 
     /*

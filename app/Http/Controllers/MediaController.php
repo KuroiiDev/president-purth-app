@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\HomeText;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class MediaController extends Controller
 {
@@ -26,14 +27,16 @@ class MediaController extends Controller
             'texts.*' => 'nullable|string|max:2048',
         ]);
 
-        if ($request->has('texts')) {
-            foreach ($request->input('texts') as $id => $value) {
-                HomeText::updateOrCreate(
-                    ['id' => $id],
-                    ['value' => $value]
-                );
+        DB::transaction(function () use ($request) {
+            if ($request->has('texts')) {
+                foreach ($request->input('texts') as $id => $value) {
+                    HomeText::updateOrCreate(
+                        ['id' => $id],
+                        ['value' => $value]
+                    );
+                }
             }
-        }
+        });
 
         return redirect()->route('admin.settings.index')
             ->with('success', 'Pengaturan berhasil disimpan!');

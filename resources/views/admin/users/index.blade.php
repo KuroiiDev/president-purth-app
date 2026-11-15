@@ -4,7 +4,7 @@
 <div class="sm:flex sm:items-center">
     <div class="sm:flex-auto">
         <h1 class="text-base font-semibold leading-6 text-gray-900">Users</h1>
-        <p class="mt-2 text-sm text-gray-700">Daftar semua akun pengguna yang terdaftar di sistem.</p>
+        <p class="mt-2 text-sm text-gray-700">Daftar semua akun pengguna dan perannya di sistem.</p>
     </div>
     <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
         <a href="{{ route('admin.users.create') }}" class="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500">
@@ -21,6 +21,7 @@
                         <tr>
                             <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Name</th>
                             <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Email</th>
+                            <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Role</th>
                             <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6"><span class="sr-only">Actions</span></th>
                         </tr>
                     </thead>
@@ -31,6 +32,13 @@
                                 {{ $user->name }}
                             </td>
                             <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $user->email }}</td>
+                            <td class="whitespace-nowrap px-3 py-4 text-sm">
+                                @if($user->role === \App\Enums\Role::Admin)
+                                    <span class="inline-flex items-center rounded-md bg-purple-50 px-2 py-1 text-xs font-medium text-purple-700 ring-1 ring-inset ring-purple-700/10">Admin</span>
+                                @else
+                                    <span class="inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10">Editor</span>
+                                @endif
+                            </td>
                             <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6 space-x-3">
                                 <a href="{{ route('admin.users.edit', $user) }}" class="text-indigo-600 hover:text-indigo-900">
                                     <i class="fas fa-edit"></i> Edit
@@ -51,7 +59,7 @@
                         </tr>
                         @empty
                         <tr>
-                            <td colspan="3" class="py-8 text-center text-sm text-gray-400">Belum ada user.</td>
+                            <td colspan="4" class="py-8 text-center text-sm text-gray-400">Belum ada user.</td>
                         </tr>
                         @endforelse
                     </tbody>
