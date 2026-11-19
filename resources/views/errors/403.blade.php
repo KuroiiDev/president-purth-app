@@ -23,7 +23,7 @@
             {{ $exception->getMessage() ?: 'Maaf, Anda tidak memiliki izin atau hak akses untuk membuka halaman ini.' }}
         </p>
         <div class="flex flex-col sm:flex-row gap-3 justify-center">
-            <a href="{{ url('/admin/dashboard') }}" class="inline-flex justify-center items-center px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm transition-all shadow-sm">
+            <a href="{{ url('/admin/') }}" class="inline-flex justify-center items-center px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm transition-all shadow-sm">
                 Kembali ke Dashboard
             </a>
             <a href="{{ url('/') }}" class="inline-flex justify-center items-center px-5 py-2.5 rounded-xl border border-slate-300 hover:bg-slate-50 text-slate-700 font-semibold text-sm transition-all">

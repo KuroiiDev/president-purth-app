@@ -164,4 +164,22 @@ class HomeCacheTest extends TestCase
         $this->assertFalse(Cache::has(HomeContentCache::CACHE_KEY), 'Rollback must bust cache.');
         $this->get(route('home'))->assertSee('Dr. Nama Asli');
     }
+
+    public function test_corrupted_cache_is_automatically_healed(): void
+    {
+        $this->seed();
+
+        // Simulate corrupted / incomplete cache in cache store
+        Cache::forever(HomeContentCache::CACHE_KEY, ['invalid' => 'payload']);
+
+        // First request encounters corrupted cache, self-heals and renders successfully
+        $response = $this->get(route('home'));
+        $response->assertStatus(200);
+        $response->assertSee('PRESIDENT UNIVERSITY HOSPITAL');
+
+        // Cached content is now properly populated
+        $cached = Cache::get(HomeContentCache::CACHE_KEY);
+        $this->assertIsArray($cached);
+        $this->assertArrayHasKey('aboutCards', $cached);
+    }
 }

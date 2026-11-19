@@ -113,39 +113,32 @@ class HomeSeeder extends Seeder
 
             $doctors = [
                 [
-                    'image' => 'profile-johanes-poso.png',
-                    'name' => 'Johanes Poso',
+                    'image' => 'smile.jpg',
+                    'name' => 'Leader A',
                     'title' => 'President Director',
-                    'text' => 'Johanes Poso is the Founder and President Director of PT Rumah Prima Sehat. With decades of experience in healthcare development, he has successfully built and expanded healthcare facilities from a community pharmacy into a modern hospital network. His leadership is driven by a commitment to delivering accessible, high-quality, and patient-centered healthcare services.',
+                    'text' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
                     'sort_order' => 1,
                 ],
                 [
-                    'image' => 'profile-setiawan-mardjuki.png',
-                    'name' => 'Setiawan Mardjuki',
+                    'image' => 'smile.jpg',
+                    'name' => 'Leader B',
                     'title' => 'Director',
-                    'text' => 'Setiawan Mardjuki is an experienced executive with extensive expertise in industrial estate development, real estate, investment, and corporate management. He holds a Master of Computer Science and a Master of Finance from California State University, USA. At PT Rumah Prima Sehat, he provides strategic leadership to support sustainable growth and the delivery of high-quality healthcare services.',
+                    'text' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
                     'sort_order' => 2,
                 ],
                 [
-                    'image' => 'profile-eric-maruapey.png',
-                    'name' => 'Adv, dr. Erik Maruapey, MARS',
+                    'image' => 'smile.jpg',
+                    'name' => 'Leader C',
                     'title' => 'Legal and Compliance Trustee',
-                    'text' => 'dr. Erik Maruapey, MARS, serves as the Legal and Compliance Trustee, bringing a strong background in healthcare management and legal affairs. He ensures that the hospital upholds the highest standards of governance, regulatory compliance, and ethical conduct in every aspect of its operations.',
+                    'text' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum elit, nec luctus magna felis sollicitudin mauris.',
                     'sort_order' => 3,
                 ],
                 [
-                    'image' => 'profile-theodora-elyas.png',
-                    'name' => 'Apt. Theodora Elyas, S. Farm',
+                    'image' => 'smile.jpg',
+                    'name' => 'Leader D',
                     'title' => 'Hospital Director',
-                    'text' => 'Theodora Elyas is a licensed pharmacist with extensive experience in hospital support services and healthcare operations. She is committed to strengthening clinical support, operational excellence, and quality standards to ensure safe, efficient, and patient-centered healthcare services.',
+                    'text' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh.',
                     'sort_order' => 4,
-                ],
-                [
-                    'image' => 'profile-agus-baharudin.png',
-                    'name' => 'Agus Baharudin Soleh, S.Pd., M.M.',
-                    'title' => 'Vice Director of General Affair',
-                    'text' => 'Agus Baharudin Soleh is a healthcare and hospitality management professional with over 15 years of leadership experience in operations, project management, and organizational development. He holds a Master of Management from President University As Hospital Vice Director, he is committed to driving operational excellence, innovation, and patient-centered healthcare services.',
-                    'sort_order' => 5,
                 ],
             ];
 

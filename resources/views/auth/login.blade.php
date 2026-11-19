@@ -89,14 +89,50 @@
                 </div>
 
                 @error('email')
-                        <span class="text-xs text-red-500 mt-1.5 block font-medium">
-                            <i class="fas fa-info-circle mr-1"></i> {{ $message }}
-                        </span>
-                    @enderror
+                    <span id="login-error-msg" class="text-xs text-red-500 mt-1.5 block font-medium">
+                        <i class="fas fa-info-circle mr-1"></i> <span id="error-text">{{ $message }}</span>
+                    </span>
+                @enderror
             </form>
 
         </div>
     </div>    
 
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const errorEl = document.getElementById('error-text');
+            if (!errorEl) return;
+
+            const text = errorEl.innerText;
+            const match = text.match(/(\d+)\s+detik/i);
+
+            if (match) {
+                let seconds = parseInt(match[1], 10);
+                const prefix = text.substring(0, match.index);
+                const submitBtn = document.querySelector('button[type="submit"]');
+
+                if (seconds > 0 && submitBtn) {
+                    submitBtn.disabled = true;
+                    submitBtn.classList.add('opacity-50', 'cursor-not-allowed');
+                }
+
+                const interval = setInterval(() => {
+                    seconds--;
+                    if (seconds > 0) {
+                        errorEl.innerText = `${prefix}${seconds} detik.`;
+                    } else {
+                        clearInterval(interval);
+                        errorEl.innerText = 'Waktu tunggu telah berakhir. Silakan coba login kembali.';
+                        errorEl.parentElement.classList.remove('text-red-500');
+                        errorEl.parentElement.classList.add('text-emerald-600');
+                        if (submitBtn) {
+                            submitBtn.disabled = false;
+                            submitBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+                        }
+                    }
+                }, 1000);
+            }
+        });
+    </script>
 </body>
 </html>
